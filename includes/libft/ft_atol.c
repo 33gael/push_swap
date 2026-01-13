@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas         ###   ########.fr       */
+/*   Created: 2026/01/13 14:09:30 by gaeducas          #+#    #+#             */
+/*   Updated: 2026/01/13 14:38:51 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+int	ft_atol(const char *str)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	int			i;
+	long int	res;
+	int			sign;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	while ((str[i] == 32) || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	if (str[i] >= 0 && str[i] <= 9)
+		res = res * 10 + (str[i] - 48);
+	return (res * sign);
+}

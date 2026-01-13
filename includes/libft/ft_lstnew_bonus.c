@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas         ###   ########.fr       */
+/*   Created: 2025/10/24 15:58:21 by gaeducas          #+#    #+#             */
+/*   Updated: 2025/10/24 16:05:43 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+t_list	*ft_lstnew(void *content)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	t_list	*dest;
+
+	dest = malloc(sizeof(t_list));
+	if (!dest)
+		return (NULL);
+	dest->content = content;
+	dest->next = NULL;
+	return (dest);
+}

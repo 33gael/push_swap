@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:16:01 by gaeducas         ###   ########.fr       */
+/*   Created: 2025/10/17 14:49:46 by gaeducas          #+#    #+#             */
+/*   Updated: 2025/10/23 14:54:55 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	validate_input(char *str)
+char	*ft_strdup(const char *src)
 {
-	int	i;
+	int		i;
+	char	*dest;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
+	while (src[i])
 		i++;
-	if (!str[i] || !ft_isdigit(str[i]))
-		return (0);
-	while (str[i])
+	dest = malloc(sizeof(char) * (i + 1));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (src[i])
 	{
-		if (!ft_isdigit(str[i]))
-			return (0);
+		dest[i] = src[i];
 		i++;
 	}
-	return (1);
+	dest[i] = '\0';
+	return (dest);
 }

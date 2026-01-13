@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:16:01 by gaeducas         ###   ########.fr       */
+/*   Created: 2025/10/20 11:01:10 by gaeducas          #+#    #+#             */
+/*   Updated: 2025/10/31 17:49:42 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	validate_input(char *str)
+static int	is_set(const char *set, char c)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (!str[i] || !ft_isdigit(str[i]))
-		return (0);
-	while (str[i])
+	while (set[i])
 	{
-		if (!ft_isdigit(str[i]))
-			return (0);
+		if (set[i] == c)
+			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		j;
+	char	*dest;
+
+	i = 0;
+	if (!s1 || !set)
+		return (NULL);
+	while (s1[i] && is_set(set, s1[i]))
+		i++;
+	j = ft_strlen(s1) - 1;
+	while (j >= 0 && is_set(set, s1[j]))
+		j--;
+	j++;
+	dest = ft_substr(s1, i, (j - i));
+	return (dest);
 }

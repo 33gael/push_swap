@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:16:01 by gaeducas         ###   ########.fr       */
+/*   Created: 2025/10/16 11:57:35 by gaeducas          #+#    #+#             */
+/*   Updated: 2025/10/23 14:55:24 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	validate_input(char *str)
+char	*ft_strrchr(const char *str, int searchchar)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (!str[i] || !ft_isdigit(str[i]))
-		return (0);
 	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
 		i++;
+	while (i >= 0)
+	{
+		if (str[i] == (unsigned char)searchchar)
+			return ((char *)str + i);
+		i--;
 	}
-	return (1);
+	if (searchchar == '\0' && !str[i])
+		return ((char *)str + i);
+	return (NULL);
 }

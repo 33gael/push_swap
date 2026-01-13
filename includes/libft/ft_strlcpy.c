@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:16:01 by gaeducas         ###   ########.fr       */
+/*   Created: 2025/10/14 11:29:17 by gaeducas          #+#    #+#             */
+/*   Updated: 2025/10/16 17:26:11 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	validate_input(char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (!str[i] || !ft_isdigit(str[i]))
-		return (0);
-	while (str[i])
+	if (size == 0)
+		return (ft_strlen((char *)src));
+	while (i < size - 1 && src[i])
 	{
-		if (!ft_isdigit(str[i]))
-			return (0);
+		dst[i] = src[i];
 		i++;
 	}
-	return (1);
+	dst[i] = '\0';
+	while (dst[i])
+		i++;
+	return (ft_strlen((char *)src));
 }
