@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas            #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas           ###   ########.fr       */
+/*   Created: 2025/10/14 16:54:16 by gaeducas            #+#    #+#             */
+/*   Updated: 2025/10/24 16:24:01 by gaeducas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	size_t			i;
+	unsigned char	*dst;
+	unsigned char	*source;
+
+	if (!src && !dest)
+		return (NULL);
+	dst = (unsigned char *)dest;
+	source = (unsigned char *)src;
+	i = 0;
+	while (i != n)
+	{
+		dst[i] = source[i];
+		i++;
+	}
+	return (dest);
+}

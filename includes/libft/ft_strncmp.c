@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas            #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas           ###   ########.fr       */
+/*   Created: 2025/10/14 15:25:48 by gaeducas            #+#    #+#             */
+/*   Updated: 2025/10/23 14:55:15 by gaeducas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	size_t			i;
+	unsigned char	*ss1;
+	unsigned char	*ss2;
+
+	i = 0;
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
+	while (ss1[i] && ss2[i] && ss1[i] == ss2[i] && i < n)
+	{
+		i++;
+	}
+	if (i == n)
+		i--;
+	if (n < 1)
+		return (0);
+	return (ss1[i] - ss2[i]);
+}

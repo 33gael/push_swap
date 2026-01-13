@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas            #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas           ###   ########.fr       */
+/*   Created: 2025/10/18 14:43:08 by gaeducas            #+#    #+#             */
+/*   Updated: 2025/10/20 22:06:30 by gaeducas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+void	ft_putnbr_fd(int nb, int fd)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	if (nb == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (nb < 0)
+	{
+		nb *= -1;
+		write(fd, "-", 1);
+	}
+	if (nb >= 0 && nb <= 9)
+		ft_putchar_fd(nb + '0', fd);
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+}

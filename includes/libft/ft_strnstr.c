@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas            #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas           ###   ########.fr       */
+/*   Created: 2025/10/16 13:22:10 by gaeducas            #+#    #+#             */
+/*   Updated: 2025/10/17 13:22:02 by gaeducas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (little[0] == '\0')
+		return ((char *)(big + i));
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (little[j] && big[i + j] == little[j] && (i + j) < len)
+			j++;
+		if (little[j] == '\0')
+			return ((char *)(big + i));
+		i++;
+	}
+	return (0);
+}

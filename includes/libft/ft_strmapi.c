@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas            #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas           ###   ########.fr       */
+/*   Created: 2025/10/19 15:03:28 by gaeducas            #+#    #+#             */
+/*   Updated: 2025/11/01 14:41:18 by gaeducas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	unsigned int	i;
+	char			*dest;
+
+	i = 0;
+	if (s == NULL || f == NULL)
+		return (NULL);
+	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!dest)
+		return (NULL);
+	while (s[i])
+	{
+		dest[i] = f(i, s[i]);
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/11 02:02:48 by gaeducas            #+#    #+#             */
-/*   Updated: 2026/01/13 10:18:12 by gaeducas           ###   ########.fr       */
+/*   Created: 2025/10/15 11:58:29 by gaeducas            #+#    #+#             */
+/*   Updated: 2025/10/17 12:33:28 by gaeducas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-typedef struct s_node
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void			*content;
-	struct s_node	*node;
-	struct s_node	*next;
-}					t_node;
+	unsigned char	*destination;
+	unsigned char	*source;
+
+	if (!dest && !src)
+		return (NULL);
+	source = (unsigned char *)src;
+	destination = (unsigned char *)dest;
+	if (destination < source)
+	{
+		ft_memcpy(destination, source, n);
+	}
+	else
+	{
+		while (n-- > 0)
+			destination[n] = source[n];
+	}
+	return (dest);
+}
