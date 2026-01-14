@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:16:01 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/14 09:52:25 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,17 @@ int	validate_input(char *str)
 		i++;
 	}
 	return (1);
+}
+int	parse_int(char *str)
+{
+	int	*res;
+	int	i;
+
+	i = 0;
+	while (str[i])
+		res = ft_atol(str);
+	if (str[i] < -2147483648 && str[i] > 2147483647)
+		return (0);
+	else
+		return (1);
 }

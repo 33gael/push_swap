@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:03:30 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/13 15:26:07 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,7 @@ int	main(int ac, char **av)
 		i = 0;
 		while (av[j][i])
 		{
-			if (av[j][i] < '0' || av[j][i] > '9')
-			{
-				ft_putstr_fd("Error you can only use numbers\n", 2);
-				return (1);
-			}
-			i++;
+			validate_input(&av[j][i]);
 		}
 		j++;
 	}

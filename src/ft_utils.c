@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 14:09:30 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 14:38:51 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/14 09:50:52 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-int	ft_atol(const char *str)
+long int	ft_atol(const char *str)
 {
 	int			i;
 	long int	res;
@@ -32,4 +32,18 @@ int	ft_atol(const char *str)
 	if (str[i] >= 0 && str[i] <= 9)
 		res = res * 10 + (str[i] - 48);
 	return (res * sign);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	if (s == NULL)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
