@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/13 15:26:07 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/14 09:57:01 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 		while (av[j][i])
 		{
 			validate_input(&av[j][i]);
+			parse_int(&av[j][i]);
 		}
 		j++;
 	}
