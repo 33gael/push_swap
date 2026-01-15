@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/14 09:59:56 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:18:30 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ typedef struct s_node
 
 int					validate_input(char *str);
 int					parse_int(char *str);
-long int			ft_atol(const char *str);
+long long			ft_atol(const char *str);
 void				ft_putstr_fd(char *s, int fd);

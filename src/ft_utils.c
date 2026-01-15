@@ -6,16 +6,16 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 14:09:30 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/14 09:50:52 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:18:53 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long int	ft_atol(const char *str)
+long long	ft_atol(const char *str)
 {
 	int			i;
-	long int	res;
+	long long	res;
 	int			sign;
 
 	i = 0;
@@ -29,8 +29,11 @@ long int	ft_atol(const char *str)
 			sign *= -1;
 		i++;
 	}
-	if (str[i] >= 0 && str[i] <= 9)
+	while (str[i] >= '0' && str[i] <= '9')
+	{
 		res = res * 10 + (str[i] - 48);
+		i++;
+	}
 	return (res * sign);
 }
 
