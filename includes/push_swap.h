@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/15 14:58:04 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:19:53 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int					parse_int(char *str, int *result);
 long long			ft_atol(const char *str);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_isdigit(int c);
+int					check_duplicates(int *nb, int len);
 
 #endif
