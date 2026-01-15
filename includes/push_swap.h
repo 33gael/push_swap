@@ -6,14 +6,17 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/15 14:18:30 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:58:04 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/ft_printf.h"
-#include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include "../ft_printf/ft_printf.h"
+# include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -23,6 +26,9 @@ typedef struct s_node
 }					t_node;
 
 int					validate_input(char *str);
-int					parse_int(char *str);
+int					parse_int(char *str, int *result);
 long long			ft_atol(const char *str);
 void				ft_putstr_fd(char *s, int fd);
+int					ft_isdigit(int c);
+
+#endif

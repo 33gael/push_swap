@@ -6,11 +6,18 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/15 11:22:43 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/15 14:55:46 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	if ((c >= 48 && c <= 57))
+		return (1);
+	return (0);
+}
 
 int	validate_input(char *str)
 {
@@ -25,28 +32,24 @@ int	validate_input(char *str)
 	{
 		if (!ft_isdigit(str[i]))
 		{
-			ft_putstr_fd("Error\n", 2);
 			return (0);
 		}
 		i++;
 	}
 	return (1);
 }
-int	parse_int(char *str)
-{
-	int	*res;
-	int	i;
 
-	i = 0;
-	while (str[i])
-		res = ft_atol(str);
-	if (res[i] < -2147483648 && res[i] > 2147483647)
+int	parse_int(char *str, int *result)
+{
+	long long	num;
+
+	num = ft_atol(str);
+	if (num < -2147483648LL || num > 2147483647LL)
 	{
-		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
-	else
-		return (1);
+	*result = (int)num;
+	return (1);
 }
 
 int	check_duplicates(int *nb, int len)
@@ -62,7 +65,6 @@ int	check_duplicates(int *nb, int len)
 		{
 			if (nb[i] == nb[j])
 			{
-				ft_putstr_fd("Error\n", 2);
 				return (0);
 			}
 			j++;
