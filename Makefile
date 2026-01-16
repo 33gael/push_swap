@@ -6,7 +6,7 @@
 #    By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/13 11:36:41 by gaeducas          #+#    #+#              #
-#    Updated: 2026/01/16 14:05:37 by gaeducas         ###   ########.fr        #
+#    Updated: 2026/01/16 14:49:51 by gaeducas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ all: $(NAME)
 
 $(NAME): $(PRINTF) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
-	@echo "$(GREEN)✓ Push_swap créé avec succès !$(RESET)"
+	@echo "$(GREEN)✓ Push_swap created !$(RESET)"
 
 $(PRINTF):
-	@echo "$(YELLOW)Compilation de ft_printf...$(RESET)"
+	@echo "$(YELLOW)ft_printf compilation...$(RESET)"
 	@make -s -C $(LIB_DIR)/ft_printf
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -50,12 +50,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	@$(RM) $(OBJ_DIR)
 	@make -s -C $(LIB_DIR)/ft_printf clean
-	@echo "$(YELLOW)Objets supprimés.$(RESET)"
+	@echo "$(YELLOW)Objets deleted.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@make -s -C $(LIB_DIR)/ft_printf fclean
-	@echo "$(YELLOW)Nettoyage complet effectué.$(RESET)"
+	@echo "$(YELLOW)Everything cleaned.$(RESET)"
 
 re: fclean all
 
