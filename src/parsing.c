@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/15 15:47:17 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 10:09:23 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ int	validate_input(char *str)
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!str[i] || !ft_isdigit(str[i]))
-		return (1);
+		return (ERROR);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 		{
 			ft_putstr_fd("Error\n", 2);
-			return (1);
+			return (ERROR);
 		}
 		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	parse_int(char *str, int *result)
@@ -48,10 +48,10 @@ int	parse_int(char *str, int *result)
 	if (num < -2147483648LL || num > 2147483647LL)
 	{
 		ft_putstr_fd("Error\n", 2);
-		return (1);
+		return (ERROR);
 	}
 	*result = (int)num;
-	return (0);
+	return (SUCCESS);
 }
 
 int	check_duplicates(int *nb, int len)
@@ -68,11 +68,11 @@ int	check_duplicates(int *nb, int len)
 			if (nb[i] == nb[j])
 			{
 				ft_putstr_fd("Error\n", 2);
-				return (1);
+				return (ERROR);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }

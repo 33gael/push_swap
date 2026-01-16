@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/15 15:19:53 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 10:08:45 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define SUCCESS 1
+# define ERROR 0
 
 typedef struct s_node
 {
