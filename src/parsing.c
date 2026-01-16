@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/16 10:09:23 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 10:25:35 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int	validate_input(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-		{
-			ft_putstr_fd("Error\n", 2);
 			return (ERROR);
-		}
 		i++;
 	}
 	return (SUCCESS);
@@ -46,10 +43,7 @@ int	parse_int(char *str, int *result)
 
 	num = ft_atol(str);
 	if (num < -2147483648LL || num > 2147483647LL)
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (ERROR);
-	}
 	*result = (int)num;
 	return (SUCCESS);
 }
@@ -66,10 +60,7 @@ int	check_duplicates(int *nb, int len)
 		while (j < len)
 		{
 			if (nb[i] == nb[j])
-			{
-				ft_putstr_fd("Error\n", 2);
 				return (ERROR);
-			}
 			j++;
 		}
 		i++;

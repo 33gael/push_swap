@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/16 10:08:45 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 14:36:49 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 
 typedef struct s_node
 {
-	void			*content;
-	struct s_node	*node;
+	int				value;
 	struct s_node	*next;
 }					t_node;
 
@@ -34,5 +33,7 @@ long long			ft_atol(const char *str);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_isdigit(int c);
 int					check_duplicates(int *nb, int len);
+t_node				*create_node(int value);
+void				stack_add_back(t_node **stack, t_node *new_node);
 
 #endif

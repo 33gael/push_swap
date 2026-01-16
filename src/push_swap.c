@@ -6,16 +6,22 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/16 10:14:49 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 10:59:21 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+static int	ft_error(int *numbers)
+{
+	ft_putstr_fd("Error\n", 2);
+	free(numbers);
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	int	j;
-	int	i;
 	int	count;
 	int	*numbers;
 
@@ -28,13 +34,13 @@ int	main(int ac, char **av)
 	j = 1;
 	while (j < ac)
 	{
-		if (*numbers = validate_input(av[j]) == ERROR)
-			free(numbers);
-		if (*numbers = parse_int(av[j], numbers) == ERROR)
-			free(numbers);
-		if (*numbers = check_duplicates(&numbers, count) == ERROR)
-			free(numbers);
+		if (validate_input(av[j]) == ERROR)
+			return (ft_error(numbers));
+		if (parse_int(av[j], &numbers[j - 1]) == ERROR)
+			return (ft_error(numbers));
 		j++;
 	}
+	if (check_duplicates(numbers, count) == ERROR)
+		return (ft_error(numbers));
 	return (0);
 }
