@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/16 10:59:21 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:02:45 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ static int	ft_error(int *numbers)
 
 int	main(int ac, char **av)
 {
-	int	j;
-	int	count;
-	int	*numbers;
+	int		j;
+	int		count;
+	int		*numbers;
+	t_node	*stack_a;
 
 	if (ac < 2)
 		return (1);
@@ -42,5 +43,15 @@ int	main(int ac, char **av)
 	}
 	if (check_duplicates(numbers, count) == ERROR)
 		return (ft_error(numbers));
+	if (is_sorted(stack_a))
+	{
+		free_stack(&stack_a);
+		return (0);
+	}
+	stack_a = init_stack(numbers, count);
+	if (!stack_a)
+		return (ft_error(numbers));
+	free(numbers);
+	free_stack(&stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/16 14:48:00 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:01:53 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ t_node				*create_node(int value);
 void				stack_add_back(t_node **stack, t_node *new_node);
 void				free_stack(t_node **stack);
 t_node				*init_stack(int *numbers, int count);
+int					stack_size(t_node *stack);
+int					is_sorted(t_node *stack);
+void				error_exit(void);
 
 #endif
