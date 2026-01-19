@@ -6,13 +6,12 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 22:23:51 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/18 22:24:40 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:23:21 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* Récupère la prochaine valeur min qui n'a pas encore d'index (-1) */
 static t_node	*get_next_min(t_node **stack)
 {
 	t_node	*head;
@@ -34,7 +33,6 @@ static t_node	*get_next_min(t_node **stack)
 	return (min);
 }
 
-/* Assigne un index (0 à N-1) à chaque noeud selon sa valeur */
 void	index_stack(t_node **stack)
 {
 	t_node	*head;

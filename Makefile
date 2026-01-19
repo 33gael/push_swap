@@ -6,7 +6,7 @@
 #    By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/13 11:36:41 by gaeducas          #+#    #+#              #
-#    Updated: 2026/01/19 14:13:38 by gaeducas         ###   ########.fr        #
+#    Updated: 2026/01/19 15:24:08 by gaeducas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,17 +23,17 @@ SRC_DIR     = src
 OBJ_DIR     = obj
 
 SRCS        = $(SRC_DIR)/push_swap.c \
-              $(SRC_DIR)/parsing.c \
-              $(SRC_DIR)/stack_init.c \
-              $(SRC_DIR)/ft_utils.c \
-              $(SRC_DIR)/utils.c \
-              $(SRC_DIR)/push.c \
-              $(SRC_DIR)/swap.c \
-              $(SRC_DIR)/rotate.c \
-              $(SRC_DIR)/rev_rotate.c \
-              $(SRC_DIR)/lil_sort.c \
-              $(SRC_DIR)/butterfly.c \
-              $(SRC_DIR)/indexing.c
+				$(SRC_DIR)/parsing.c \
+				$(SRC_DIR)/stack_init.c \
+				$(SRC_DIR)/ft_utils.c \
+				$(SRC_DIR)/utils.c \
+				$(SRC_DIR)/push.c \
+				$(SRC_DIR)/swap.c \
+				$(SRC_DIR)/rotate.c \
+				$(SRC_DIR)/rev_rotate.c \
+				$(SRC_DIR)/lil_sort.c \
+				$(SRC_DIR)/butterfly.c \
+				$(SRC_DIR)/indexing.c
 
 OBJS        = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 22:25:44 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/19 09:55:48 by gaeducas         ###   ########.fr       */
+/*   Created: 2026/01/17 22:25:44 by gaeducas          #+#    #+#             */
+/*   Updated: 2026/01/19 15:23:17 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* Trouve la position du plus grand index dans la pile B */
 static int	find_max_pos(t_node *stack, int max_index)
 {
 	int	i;
@@ -28,7 +27,6 @@ static int	find_max_pos(t_node *stack, int max_index)
 	return (-1);
 }
 
-/* Phase 2 : Renvoie tout vers A en triant (du plus grand au plus petit) */
 static void	push_back_to_a(t_node **a, t_node **b)
 {
 	int	size;
@@ -52,8 +50,6 @@ static void	push_back_to_a(t_node **a, t_node **b)
 	}
 }
 
-/* Calcule la taille optimale du chunk selon la taille de la liste */
-/* n = 15 pour 100 nombres, n = 30 pour 500 nombres */
 static int	get_n(int size)
 {
 	if (size <= 100)
@@ -61,7 +57,6 @@ static int	get_n(int size)
 	return (30);
 }
 
-/* L'algorithme principal Butterfly */
 void	butterfly_sort(t_node **a, t_node **b)
 {
 	int	n;
