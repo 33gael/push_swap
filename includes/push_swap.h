@@ -6,14 +6,14 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/18 22:26:14 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/19 14:10:50 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../ft_printf/ft_printf.h"
+# include "ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
