@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 10:43:29 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/16 14:50:15 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/18 22:27:27 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node	*create_node(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
+	new_node->index = -1;
 	new_node->next = NULL;
 	return (new_node);
 }

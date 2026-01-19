@@ -6,7 +6,7 @@
 #    By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/13 11:36:41 by gaeducas          #+#    #+#              #
-#    Updated: 2026/01/16 14:49:51 by gaeducas         ###   ########.fr        #
+#    Updated: 2026/01/19 09:57:53 by gaeducas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	@$(RM) $(OBJ_DIR)
 	@make -s -C $(LIB_DIR)/ft_printf clean
-	@echo "$(YELLOW)Objets deleted.$(RESET)"
+	@echo "$(YELLOW)Objects deleted.$(RESET)"
 
 fclean: clean
 	@$(RM) $(NAME)
