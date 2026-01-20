@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 12:43:13 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:04:19 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:36:45 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ static void	rotate(t_node **stack)
 void	ra(t_node **stack_a)
 {
 	rotate(stack_a);
-	ft_putstr_fd("ra\n", 1);
+	ft_printf("%s", "ra\n");
 }
 
 void	rb(t_node **stack_b)
 {
 	rotate(stack_b);
-	ft_putstr_fd("rb\n", 1);
+	ft_printf("%s", "rb\n");
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	ft_putstr_fd("rr\n", 1);
+	ft_printf("%s", "rr\n");
 }

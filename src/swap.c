@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 10:16:08 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:04:28 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:36:46 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ static void	swap(t_node *stack)
 void	sa(t_node **stack_a)
 {
 	swap(*stack_a);
-	ft_putstr_fd("sa\n", 1);
+	ft_printf("%s", "sa\n");
 }
 
 void	sb(t_node **stack_b)
 {
 	swap(*stack_b);
-	ft_putstr_fd("sb\n", 1);
+	ft_printf("%s", "sb\n");
 }
 
 void	ss(t_node **stack_a, t_node **stack_b)
 {
 	swap(*stack_a);
 	swap(*stack_b);
-	ft_putstr_fd("ss\n", 1);
+	ft_printf("%s", "ss\n");
 }

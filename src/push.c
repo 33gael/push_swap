@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 18:16:38 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:04:15 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:36:43 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static void	push(t_node **src, t_node **dest)
 void	pa(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_b, stack_a);
-	ft_putstr_fd("pa\n", 1);
+	ft_printf("%s", "pa\n");
 }
 
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_a, stack_b);
-	ft_putstr_fd("pb\n", 1);
+	ft_printf("%s", "pb\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 13:38:23 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:36:42 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,21 @@ static void	sort_stack(t_node **a, t_node **b, int size)
 		butterfly_sort(a, b);
 }
 
+static void	free_resources(t_node **a, t_node **b, int *n)
+{
+	free_stack(a);
+	free_stack(b);
+	if (n)
+		free(n);
+	ft_putstr_fd("Error\n", 2);
+}
+
 static int	*parse_args_wrapper(int ac, char **av, int *count)
 {
 	int	*numbers;
 
 	*count = count_args(ac, av);
-	if (*count == 0)
+	if (*count == ERROR || *count == 0)
 		return (NULL);
 	numbers = malloc(sizeof(int) * (*count));
 	if (!numbers)
@@ -47,15 +56,6 @@ static int	*parse_args_wrapper(int ac, char **av, int *count)
 	return (numbers);
 }
 
-static void	free_resources(t_node **a, t_node **b, int *n)
-{
-	free_stack(a);
-	free_stack(b);
-	if (n)
-		free(n);
-	ft_putstr_fd("Error\n", 2);
-}
-
 int	main(int ac, char **av)
 {
 	int		count;
@@ -68,7 +68,10 @@ int	main(int ac, char **av)
 		return (0);
 	numbers = parse_args_wrapper(ac, av, &count);
 	if (!numbers)
-		return (ft_putstr_fd("Error\n", 2), 1);
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
+	}
 	stack_a = init_stack(numbers, count);
 	free(numbers);
 	if (!stack_a)
@@ -80,5 +83,4 @@ int	main(int ac, char **av)
 		sort_stack(&stack_a, &stack_b, stack_size(stack_a));
 	free_stack(&stack_a);
 	free_stack(&stack_b);
-	return (0);
 }

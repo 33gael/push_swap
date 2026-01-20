@@ -3,51 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
+/*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 13:45:46 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:36:41 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	validate_syntax(char *str_n)
+static int	check_syntax(char *str)
 {
 	int	i;
+	int	has_digit;
 
 	i = 0;
-	if (str_n[i] == '+' || str_n[i] == '-')
-		i++;
-	if (!str_n[i])
-		return (ERROR);
-	while (str_n[i])
+	has_digit = 0;
+	while (str[i])
 	{
-		if (!ft_isdigit(str_n[i]))
+		while (str[i] == ' ')
+			i++;
+		if (!str[i])
+			break ;
+		if (str[i] == '+' || str[i] == '-')
+			i++;
+		if (!ft_isdigit(str[i]))
 			return (ERROR);
-		i++;
-	}
-	return (SUCCESS);
-}
-
-int	check_duplicates(int *nb, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < len)
-	{
-		j = i + 1;
-		while (j < len)
+		while (ft_isdigit(str[i]))
 		{
-			if (nb[i] == nb[j])
-				return (ERROR);
-			j++;
+			has_digit = 1;
+			i++;
 		}
-		i++;
+		if (str[i] && str[i] != ' ')
+			return (ERROR);
 	}
-	return (SUCCESS);
+	return (has_digit);
 }
 
 int	count_args(int ac, char **av)
@@ -60,6 +50,8 @@ int	count_args(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
+		if (check_syntax(av[i]) == ERROR)
+			return (ERROR);
 		j = 0;
 		while (av[i][j])
 		{
@@ -75,7 +67,7 @@ int	count_args(int ac, char **av)
 	return (count);
 }
 
-static int	parse_line(char *str, int *numbers, int *k)
+static int	parse_token(char *str, int *numbers, int *k)
 {
 	int			j;
 	long long	tmp;
@@ -106,8 +98,28 @@ int	get_numbers(int ac, char **av, int *numbers)
 	k = 0;
 	while (i < ac)
 	{
-		if (parse_line(av[i], numbers, &k) == ERROR)
+		if (parse_token(av[i], numbers, &k) == ERROR)
 			return (ERROR);
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int	check_duplicates(int *nb, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (nb[i] == nb[j])
+				return (ERROR);
+			j++;
+		}
 		i++;
 	}
 	return (SUCCESS);
