@@ -6,59 +6,11 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:04:10 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:38:23 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static int	validate_and_parse_array(char **av, int *numbers, int count)
-{
-	int	j;
-
-	j = 1;
-	while (j < count + 1)
-	{
-		if (validate_input(av[j]) == ERROR)
-			return (ERROR);
-		if (parse_int(av[j], &numbers[j - 1]) == ERROR)
-			return (ERROR);
-		j++;
-	}
-	if (check_duplicates(numbers, count) == ERROR)
-		return (ERROR);
-	return (SUCCESS);
-}
-
-static int	*parse_arguments(int ac, char **av, int *count)
-{
-	int	*numbers;
-
-	*count = ac - 1;
-	numbers = malloc(sizeof(int) * (*count));
-	if (!numbers)
-		return (NULL);
-	if (validate_and_parse_array(av, numbers, *count) == ERROR)
-	{
-		free(numbers);
-		return (NULL);
-	}
-	return (numbers);
-}
-
-static t_node	*handle_stack_creation(int *numbers, int count)
-{
-	t_node	*stack;
-
-	stack = init_stack(numbers, count);
-	free(numbers);
-	if (!stack)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (NULL);
-	}
-	return (stack);
-}
 
 static void	sort_stack(t_node **a, t_node **b, int size)
 {
@@ -72,6 +24,38 @@ static void	sort_stack(t_node **a, t_node **b, int size)
 		butterfly_sort(a, b);
 }
 
+static int	*parse_args_wrapper(int ac, char **av, int *count)
+{
+	int	*numbers;
+
+	*count = count_args(ac, av);
+	if (*count == 0)
+		return (NULL);
+	numbers = malloc(sizeof(int) * (*count));
+	if (!numbers)
+		return (NULL);
+	if (get_numbers(ac, av, numbers) == ERROR)
+	{
+		free(numbers);
+		return (NULL);
+	}
+	if (check_duplicates(numbers, *count) == ERROR)
+	{
+		free(numbers);
+		return (NULL);
+	}
+	return (numbers);
+}
+
+static void	free_resources(t_node **a, t_node **b, int *n)
+{
+	free_stack(a);
+	free_stack(b);
+	if (n)
+		free(n);
+	ft_putstr_fd("Error\n", 2);
+}
+
 int	main(int ac, char **av)
 {
 	int		count;
@@ -81,16 +65,17 @@ int	main(int ac, char **av)
 
 	stack_b = NULL;
 	if (ac < 2)
-		return (1);
-	numbers = parse_arguments(ac, av, &count);
+		return (0);
+	numbers = parse_args_wrapper(ac, av, &count);
 	if (!numbers)
+		return (ft_putstr_fd("Error\n", 2), 1);
+	stack_a = init_stack(numbers, count);
+	free(numbers);
+	if (!stack_a)
 	{
-		ft_putstr_fd("Error\n", 2);
+		free_resources(NULL, NULL, NULL);
 		return (1);
 	}
-	stack_a = handle_stack_creation(numbers, count);
-	if (!stack_a)
-		return (1);
 	if (!is_sorted(stack_a))
 		sort_stack(&stack_a, &stack_b, stack_size(stack_a));
 	free_stack(&stack_a);

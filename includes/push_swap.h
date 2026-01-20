@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 02:02:48 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:03:52 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:36:44 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "ft_printf/ft_printf.h"
-# include <fcntl.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -28,19 +28,19 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-int					validate_input(char *str);
-int					parse_int(char *str, int *result);
 long long			ft_atol(const char *str);
 void				ft_putstr_fd(char *s, int fd);
 int					ft_isdigit(int c);
+int					validate_syntax(char *str_n);
 int					check_duplicates(int *nb, int len);
+int					count_args(int ac, char **av);
+int					get_numbers(int ac, char **av, int *numbers);
 t_node				*create_node(int value);
 void				stack_add_back(t_node **stack, t_node *new_node);
 void				free_stack(t_node **stack);
 t_node				*init_stack(int *numbers, int count);
 int					stack_size(t_node *stack);
 int					is_sorted(t_node *stack);
-void				error_exit(void);
 void				sa(t_node **stack_a);
 void				sb(t_node **stack_b);
 void				ss(t_node **stack_a, t_node **stack_b);

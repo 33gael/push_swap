@@ -6,11 +6,16 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 14:09:30 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:04:02 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:46:31 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
 
 long long	ft_atol(const char *str)
 {

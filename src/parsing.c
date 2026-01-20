@@ -6,45 +6,27 @@
 /*   By: gaeducas <gaeducas@student.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:19 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 10:04:08 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 13:45:46 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_isdigit(int c)
-{
-	if ((c >= 48 && c <= 57))
-		return (1);
-	return (0);
-}
-
-int	validate_input(char *str)
+int	validate_syntax(char *str_n)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '+' || str[i] == '-')
+	if (str_n[i] == '+' || str_n[i] == '-')
 		i++;
-	if (!str[i] || !ft_isdigit(str[i]))
+	if (!str_n[i])
 		return (ERROR);
-	while (str[i])
+	while (str_n[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (!ft_isdigit(str_n[i]))
 			return (ERROR);
 		i++;
 	}
-	return (SUCCESS);
-}
-
-int	parse_int(char *str, int *result)
-{
-	long long	num;
-
-	num = ft_atol(str);
-	if (num < -2147483648LL || num > 2147483647LL)
-		return (ERROR);
-	*result = (int)num;
 	return (SUCCESS);
 }
 
@@ -63,6 +45,69 @@ int	check_duplicates(int *nb, int len)
 				return (ERROR);
 			j++;
 		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int	count_args(int ac, char **av)
+{
+	int	count;
+	int	i;
+	int	j;
+
+	count = 0;
+	i = 1;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			while (av[i][j] == ' ')
+				j++;
+			if (av[i][j])
+				count++;
+			while (av[i][j] && av[i][j] != ' ')
+				j++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+static int	parse_line(char *str, int *numbers, int *k)
+{
+	int			j;
+	long long	tmp;
+
+	j = 0;
+	while (str[j])
+	{
+		while (str[j] == ' ')
+			j++;
+		if (str[j] == '\0')
+			break ;
+		tmp = ft_atol(&str[j]);
+		if (tmp > INT_MAX || tmp < INT_MIN)
+			return (ERROR);
+		numbers[(*k)++] = (int)tmp;
+		while (str[j] && str[j] != ' ')
+			j++;
+	}
+	return (SUCCESS);
+}
+
+int	get_numbers(int ac, char **av, int *numbers)
+{
+	int	i;
+	int	k;
+
+	i = 1;
+	k = 0;
+	while (i < ac)
+	{
+		if (parse_line(av[i], numbers, &k) == ERROR)
+			return (ERROR);
 		i++;
 	}
 	return (SUCCESS);
