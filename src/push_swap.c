@@ -6,7 +6,7 @@
 /*   By: gaeducas <gaeducas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 01:56:22 by gaeducas          #+#    #+#             */
-/*   Updated: 2026/01/20 14:36:42 by gaeducas         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:42:37 by gaeducas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	free_resources(t_node **a, t_node **b, int *n)
 	ft_putstr_fd("Error\n", 2);
 }
 
-static int	*parse_args_wrapper(int ac, char **av, int *count)
+static int	*parse_args(int ac, char **av, int *count)
 {
 	int	*numbers;
 
@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac < 2)
 		return (0);
-	numbers = parse_args_wrapper(ac, av, &count);
+	numbers = parse_args(ac, av, &count);
 	if (!numbers)
 	{
 		ft_putstr_fd("Error\n", 2);
